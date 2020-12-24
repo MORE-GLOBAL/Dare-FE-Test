@@ -1,0 +1,36 @@
+{
+  "name": "dare-fe-test",
+  "version": "1.0.0",
+  "description": "Dare Front-end exercise",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp --development",
+    "build": "gulp build --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MORE-GLOBAL/Dare-FE-Test.git"
+  },
+  "keywords": [],
+  "author": "Indrajit Sarkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MORE-GLOBAL/Dare-FE-Test/issues"
+  },
+  "homepage": "https://github.com/MORE-GLOBAL/Dare-FE-Test#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "browser-sync": "^2.26.13",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-mode": "^1.0.2",
+    "gulp-sass": "^4.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  }
+}
