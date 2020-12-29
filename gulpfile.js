@@ -1,43 +1,12 @@
-// var gulp        = require('gulp');
-// var browserSync = require('browser-sync').create();
-// var sass        = require('gulp-sass');
-
-// // Compile sass into CSS & auto-inject into browsers
-// gulp.task('sass', function() {
-//     return gulp.src(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/*.scss'])
-//         .pipe(sass())
-//         .pipe(gulp.dest("src/css"))
-//         .pipe(browserSync.stream());
-// });
-
-// // Move the javascript files into our /src/js folder
-// gulp.task('js', function() {
-//     return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/popper.js/dist/umd/popper.min.js'])
-//         .pipe(gulp.dest("src/js"))
-//         .pipe(browserSync.stream());
-// });
-
-// // Static Server + watching scss/html files
-// gulp.task('serve', gulp.series('sass', function() {
-
-//     browserSync.init({
-//         server: "./src"  
-//     });
-
-//     gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/*.scss'], gulp.series('sass'));
-//     gulp.watch('src/js/*.js').on('change', browserSync.reload);
-//     gulp.watch("src/*.html").on('change', browserSync.reload);
-// }));
-
-// gulp.task('default', gulp.series('js', 'serve'));
-
 const { src, dest, watch, series, parallel } = require('gulp');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const del = require('del');
 const mode = require('gulp-mode')();
+const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 const autoprefixer = require('gulp-autoprefixer');
+const csso = require('gulp-csso');
 const babel = require('gulp-babel');
 
 // Clean Tasks
@@ -53,9 +22,12 @@ const cleanImages = () => {
 // Compile sass into CSS & auto-inject into browsers
 
 const css = () => {
-    return gulp.src(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/**/*.scss'])
+    return gulp.src(['src/scss/**/*.scss'])
+        .pipe(mode.development(sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
+        .pipe(mode.production(csso()))
+        .pipe(mode.development( sourcemaps.write() ))
         .pipe(dest('src/css'))
         .pipe(mode.development( browserSync.stream() ));
 }
@@ -70,7 +42,7 @@ const copyCss = () => {
 // Copy JS
 
 const js = () => {
-    return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/popper.js/dist/umd/popper.min.js', 'src/js/main.js'])
+    return src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js', 'node_modules/popper.js/dist/umd/popper.min.js', 'src/js/main.js'])
         .pipe(dest('dist/js'))
         .pipe(mode.development( browserSync.stream() ));
 }
