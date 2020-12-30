@@ -5,7 +5,7 @@ const del = require('del');
 const mode = require('gulp-mode')();
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
-const autoprefixer = require('gulp-autoprefixer');
+const prefix = require('gulp-autoprefixer');
 const csso = require('gulp-csso');
 const babel = require('gulp-babel');
 
@@ -25,7 +25,7 @@ const css = () => {
     return gulp.src(['src/scss/**/*.scss'])
         .pipe(mode.development(sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer())
+        .pipe(prefix('last 2 versions'))
         .pipe(mode.production(csso()))
         .pipe(mode.development( sourcemaps.write() ))
         .pipe(dest('src/css'))

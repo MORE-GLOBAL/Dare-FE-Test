@@ -7,15 +7,119 @@ body {
 
 .container {
     @include media-breakpoint-up(xl) {
-        max-width: 960px;
+        max-width: 780px;
     }
 }
 
 .navbar {
-    background-color: rgba($color: #000000, $alpha: 0.3);
+    background-color: rgba($color: #000000, $alpha: 0);
 
-    a {
+    @include media-breakpoint-up(lg) {
+        padding: 20px 0;
+        background-color: rgba($color: #000000, $alpha: 0.3);
+    }
+
+    .inner {
+        width: 100%;
+        text-align: right;
+    }
+
+    .navbar-toggler {
+        @include font-size(14px);
         color: #fff;
+        padding: 10px 19px;
+        position: relative;
+        z-index: 2;
+        border-radius: 0;
+        border: 1px solid #fff;
+
+        &:after {
+            content: "Close";
+        }
+
+        &.collapsed {
+            background-color: rgba($color: #000000, $alpha: 0.2);
+
+            &:after {
+                content: "Menu";
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .navbar-collapse {
+        height: 100vh;
+        background: #282828;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 1;
+
+        @include media-breakpoint-up(lg) {
+            height: auto;
+            background: transparent;
+            position: static;
+            top: auto;
+            left: auto;
+            right: auto;
+        }
+
+        .navbar-nav {
+            margin-top: 84px;
+            text-align: center;
+
+            @include media-breakpoint-up(lg) {
+                margin-top: 0;
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        &.collapsing {
+            transition: none;
+            display: none;
+        }
+    }
+
+    li {
+        padding: 20px 0;
+
+        @include media-breakpoint-up(lg) {
+            padding: 0 35px;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+
+            @include media-breakpoint-up(lg) {
+                padding-right: 0;
+            }
+        }
+
+
+        a {
+            color: #fff;
+            @include font-size(14px);
+            font-weight: bold;
+
+            @include media-breakpoint-up(lg) {
+                @include font-size(16px);
+            }
+
+            &:hover,
+            &.active {
+                text-decoration: none;
+                padding-bottom: 2px;
+                border-bottom: 1px solid #fff;
+            }
+        }
     }
 }
 
@@ -27,22 +131,86 @@ header {
     
     &.masthead-half {
         position: relative;
-        height: 50vh;
+        height: 70vh;
     }
     
     &.hero-image_home {
         background: url(../assets/img/Image-01.jpg) no-repeat center center;
         background-size: cover;
     }
+
+    &.hero-image_blusher {
+        background: url(../assets/img/Image-02.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        padding: 0 5rem;
+    }
     
     h1 {
-        position: absolute;
         color: #fff;
-        left: 0;
-        top: 50%;
-        width: 100%;
         text-align: center;
-        font-size: 50px;
+        @include font-size(20px);
         font-weight: bold;
+
+        @include media-breakpoint-up(md) {
+            @include font-size(50px);
+        }
     }
+}
+
+.main {
+    .inner {
+        margin-top: 40px;
+        margin-bottom: 60px;
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 100px;
+            margin-bottom: 120px;
+        }
+
+        .card {
+            .btn {
+                @include font-size(24px);
+                color: #5F6062;
+                padding: 0;
+    
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+.card {
+    border-radius: 0;
+    border-top: 1px solid #E6E7E9;
+    border-left: none;
+    border-right: none;
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid #E6E7E9;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card-body {
+    background: #E6E7E9;
+    padding: 20px 27px 35px 27px;
+    color: #818284;
+    @include font-size(14px);
+}
+
+.show .card-body {
+    border-bottom: 2px solid #DE886A;
 }
