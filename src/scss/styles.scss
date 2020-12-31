@@ -335,3 +335,27 @@ header {
 .show .card-body {
     border-bottom: 2px solid #DE886A;
 }
+
+.form-group {
+    margin-bottom: 40px;
+
+    .form-control {
+        border-radius: 0;
+        border: 1px solid #E6E7E9;
+    }
+}
+
+.brushes .btn {
+    background: #DE886A;
+    padding: 17px 22px;
+    @include font-size(14px);
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.form-group label {
+    @include font-size(14px);
+    font-weight: bold;
+    color: #5F6062;
+}
