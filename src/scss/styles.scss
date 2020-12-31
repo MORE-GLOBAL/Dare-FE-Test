@@ -316,11 +316,18 @@ header {
         }
     }
 
+    p {
+        margin-left: 31px;
+    }
+
     .first-para {
         &:before {
             content: "A.";
             margin-right: 17px;
+            margin-left: 0;
             font-weight: bold;
+            position: absolute;
+            left: 27px;
         }
     }
 }
