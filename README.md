@@ -1,14 +1,14 @@
 # Dare-FE-Test
 Dare Front-end exercise 
 
-Required -
+## Required -
 
-NodeJS
-Gulp
+- **NodeJS**
+- **Gulp**
 
-How to run -
+## How to run -
 
 After clone, run `npm i`
 
-Run dev mode - `npm run dev`
-Run build mode - `npm run build`
+- Run development mode - `npm run dev`
+- Run build mode - `npm run build`
