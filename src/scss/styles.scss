@@ -11,6 +11,13 @@ body {
     }
 }
 
+.mascara .main .container,
+.perfume .main .container {
+    @include media-breakpoint-up(xl) {
+        max-width: 960px;
+    }
+}
+
 .navbar {
     background-color: rgba($color: #000000, $alpha: 0);
 
@@ -144,6 +151,26 @@ header {
         background-size: cover;
     }
 
+    &.hero-image_brushes {
+        background: url(../assets/img/Image-03.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_mascara {
+        background: url(../assets/img/Image-04.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_perfume {
+        background: url(../assets/img/Image-05.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_hair {
+        background: url(../assets/img/Image-06.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
     .inner {
         display: flex;
         align-items: center;
@@ -180,13 +207,81 @@ header {
                 @include font-size(24px);
                 color: #5F6062;
                 padding: 0;
+                width: 100%;
+                text-align: left;
     
                 &:focus {
                     box-shadow: none;
                 }
+
+                .fa-angle-up {
+                    display: block;
+                }
+
+                .fa-angle-down {
+                    display: none;
+                }
+
+                .fa {
+                    float: right;
+                    padding-right: 20px;
+                }
+
+                &.collapsed {
+                    .fa-angle-down {
+                        display: block;
+                    }
+
+                    .fa-angle-up {
+                        display: none;
+                    }
+                }
             }
         }
     }
+}
+
+.mascara .right-col .inner {
+    margin-top: 40px;
+
+    @include media-breakpoint-up(md) {
+        margin-top: 170px;
+    }
+}
+
+.perfume .left-col .inner {
+    margin-top: 40px;
+    margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        margin-top: 170px;
+        margin-bottom: 120px;
+    }
+}
+
+
+.mascara .left-col .inner {
+    margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+    }
+}
+
+.perfume .right-col .inner {
+    // margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.mascara .inner p,
+.perfume .inner p {
+    @include font-size(14px);
+    color: #818284;
 }
 
 .card {
@@ -209,6 +304,25 @@ header {
     padding: 20px 27px 35px 27px;
     color: #818284;
     @include font-size(14px);
+
+    h5 {
+        @include font-size(14px);
+        color: #6A6B6D;
+        font-weight: bold;
+
+        &:before {
+            content: "Q.";
+            margin-right: 17px;
+        }
+    }
+
+    .first-para {
+        &:before {
+            content: "A.";
+            margin-right: 17px;
+            font-weight: bold;
+        }
+    }
 }
 
 .show .card-body {
