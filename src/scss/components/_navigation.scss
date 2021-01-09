@@ -1,0 +1,111 @@
+.navbar {
+    background-color: rgba($black, $alpha: 0);
+
+    @include media-breakpoint-up(lg) {
+        padding: 20px 0;
+        background-color: rgba($black, $alpha: 0.3);
+    }
+
+    .inner {
+        width: 100%;
+        text-align: right;
+    }
+
+    .navbar-toggler {
+        @include font-size(14px);
+        color: $white;
+        padding: 10px 19px;
+        position: relative;
+        z-index: 2;
+        border-radius: 0;
+        border: 1px solid $white;
+
+        &:after {
+            content: "Close";
+        }
+
+        &.collapsed {
+            background-color: rgba($black, $alpha: 0.2);
+
+            &:after {
+                content: "Menu";
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .navbar-collapse {
+        height: 100vh;
+        background: $grey_1;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 1;
+
+        @include media-breakpoint-up(lg) {
+            height: auto;
+            background: transparent;
+            position: static;
+            top: auto;
+            left: auto;
+            right: auto;
+        }
+
+        .navbar-nav {
+            margin-top: 84px;
+            text-align: center;
+
+            @include media-breakpoint-up(lg) {
+                margin-top: 0;
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        &.collapsing {
+            transition: none;
+            display: none;
+        }
+    }
+
+    li {
+        padding: 20px 0;
+
+        @include media-breakpoint-up(lg) {
+            padding: 0 35px;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+
+            @include media-breakpoint-up(lg) {
+                padding-right: 0;
+            }
+        }
+
+
+        a {
+            color: #fff;
+            @include font-size(14px);
+            font-weight: bold;
+
+            @include media-breakpoint-up(lg) {
+                @include font-size(16px);
+            }
+
+            &:hover,
+            &.active {
+                text-decoration: none;
+                padding-bottom: 2px;
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+}

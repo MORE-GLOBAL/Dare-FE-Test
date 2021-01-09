@@ -1,0 +1,23 @@
+.form-group {
+    margin-bottom: 40px;
+
+    .form-control {
+        border-radius: 0;
+        border: 1px solid $grey_3;
+    }
+}
+
+.brushes .btn {
+    background: $orange;
+    padding: 17px 22px;
+    @include font-size(14px);
+    font-weight: bold;
+    color: $white;
+
+}
+
+.form-group label {
+    @include font-size(14px);
+    font-weight: bold;
+    color: $grey_6;
+}

@@ -1,0 +1,111 @@
+body {
+    font-family: "Noto Sans";
+}
+
+.container {
+    @include media-breakpoint-up(xl) {
+        max-width: 780px;
+    }
+}
+
+.mascara .main .container,
+.perfume .main .container {
+    @include media-breakpoint-up(xl) {
+        max-width: 960px;
+    }
+}
+
+.mascara .right-col .inner {
+    margin-top: 40px;
+
+    @include media-breakpoint-up(md) {
+        margin-top: 170px;
+    }
+}
+
+.perfume .left-col .inner {
+    margin-top: 40px;
+    margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        margin-top: 170px;
+        margin-bottom: 120px;
+    }
+}
+
+
+.mascara .left-col .inner {
+    margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+    }
+}
+
+.perfume .right-col .inner {
+    // margin-bottom: 0;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.mascara .inner p,
+.perfume .inner p {
+    @include font-size(14px);
+    color: $grey_2;
+}
+
+.card {
+    border-radius: 0;
+    border-top: 1px solid $grey_3;
+    border-left: none;
+    border-right: none;
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid $grey_3;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card-body {
+    background: $grey_3;
+    padding: 20px 27px 35px 27px;
+    color: $grey_4;
+    @include font-size(14px);
+
+    h5 {
+        @include font-size(14px);
+        color: $grey_5;
+        font-weight: bold;
+
+        &:before {
+            content: "Q.";
+            margin-right: 17px;
+        }
+    }
+
+    p {
+        margin-left: 31px;
+    }
+
+    .first-para {
+        &:before {
+            content: "A.";
+            margin-right: 17px;
+            margin-left: 0;
+            font-weight: bold;
+            position: absolute;
+            left: 27px;
+        }
+    }
+}
+
+.show .card-body {
+    border-bottom: 2px solid $orange;
+}

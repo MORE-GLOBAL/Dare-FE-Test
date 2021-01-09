@@ -1,0 +1,49 @@
+.main {
+    .inner {
+        margin-top: 40px;
+        margin-bottom: 60px;
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 100px;
+            margin-bottom: 120px;
+        }
+
+        .card {
+            .btn {
+                @include font-size(24px);
+                color: #5F6062;
+                padding: 0;
+                width: 100%;
+                text-align: left;
+    
+                &:focus {
+                    box-shadow: none;
+                }
+
+                .fa-angle-up {
+                    display: block;
+                }
+
+                .fa-angle-down {
+                    display: none;
+                }
+
+                .fa {
+                    float: right;
+                    padding-right: 20px;
+                }
+
+                &.collapsed {
+                    .fa-angle-down {
+                        display: block;
+                    }
+
+                    .fa-angle-up {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+header {
+    &.masthead-full {
+        position: relative;
+        height: 100vh;
+    }
+    
+    &.masthead-half {
+        position: relative;
+        height: 70vh;
+    }
+    
+    &.hero-image_home {
+        background: url(../assets/img/Image-01.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_blusher {
+        background: url(../assets/img/Image-02.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_brushes {
+        background: url(../assets/img/Image-03.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_mascara {
+        background: url(../assets/img/Image-04.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_perfume {
+        background: url(../assets/img/Image-05.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    &.hero-image_hair {
+        background: url(../assets/img/Image-06.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        padding: 0 5rem;
+    }
+    
+    h1 {
+        color: $white;
+        text-align: center;
+        text-shadow: 1px 1px $grey_4;
+        @include font-size(20px);
+        font-weight: bold;
+
+        @include media-breakpoint-up(md) {
+            @include font-size(50px);
+        }
+    }
+}
