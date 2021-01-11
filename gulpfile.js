@@ -8,6 +8,7 @@ const browserSync = require('browser-sync').create();
 const prefix = require('gulp-autoprefixer');
 const csso = require('gulp-csso');
 const babel = require('gulp-babel');
+const nunjucksRender = require('gulp-nunjucks-render');
 
 // Clean Tasks
 
@@ -54,6 +55,15 @@ const copyImages = () => {
         .pipe(dest('dist/assets/img'));
 }
 
+const njk = () => {
+    return src('src/pages/**/*.+(html|njk)')
+        .pipe(nunjucksRender({
+            path: ['src/templates']
+        }))
+        .pipe(dest('src'))
+        .pipe(mode.development( browserSync.stream() ));
+}
+
 // Copy HTML
 
 const copyHtml = () => {
@@ -72,11 +82,12 @@ const watchForChanges = () => {
 
     watch('src/scss/**/*.scss', css);
     watch('src/**/*.js', js);
-    watch('**/*.html').on('change', browserSync.reload);
+    // watch('**/*.html').on('change', browserSync.reload);
+    watch(['src/templates/**/*.+(html|njk)', 'src/pages/**/*.+(html|njk)'], njk);
     watch('src/assets/images/**/*.{png,jpg,jpeg,gif,svg}', series(cleanImages, copyImages));
 }
 
 // Public Tasks
 
-exports.default = series(clean, parallel(css, js, copyImages, copyCss), watchForChanges);
-exports.build = series(clean, parallel(css, js, copyImages, copyHtml, copyCss));
+exports.default = series(clean, parallel(css, js, copyImages, njk, copyCss), watchForChanges);
+exports.build = series(clean, parallel(css, js, copyImages, njk, copyHtml, copyCss));
